@@ -1,0 +1,35 @@
+# All tunable pipeline parameters go here
+
+ingestion:
+  arxiv_categories: ["cs.AI", "cs.CL", "cs.CV", "cs.LG", "cs.NE", "cs.RO"]
+  max_results_per_category: 10
+  days_back: 2
+
+relevance:
+  interest_profile: ["GPU inference", "AI hardware/accelerators", "LLM serving", "quantization", "generative AI systems", "large language models"]
+  relevance_threshold: 6
+  model_name: "llama-3.3-70b-versatile"
+  temperature: 0.1
+
+summarization:
+  model_name: "llama-3.3-70b-versatile"
+  temperature: 0.4
+  max_summary_tokens: 600
+  tier: "abstract"
+
+chunking:
+  chunk_size: 2000
+  overlap: 200
+
+vectorstore:
+  embedding_model: "BAAI/bge-large-en-v1.5"
+  vectorstore_type: "chroma"
+  device: "cuda"
+  collection_name_papers: "arxiv_papers"
+  persist_directory: "./vectorstore"
+  top_k: 5
+
+email:
+  sender_email: ""
+  recipient_email: "aryandhawan2802@gmail.com"
+  subject_template: "Daily AI Research Papers Digest - {date}"
