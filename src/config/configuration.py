@@ -1,6 +1,7 @@
 from utils.common import *
 from entity.ingestion_config import IngestionConfig
 from entity.relevance_config import RelevanceConfig
+from entity.summarization_config import SummarizationConfig
 class ConfigurationManager:
     def __init__(self, config_filepath: Path = Path("config/config.yaml")):
         self.config = read_yaml(config_filepath)
@@ -23,3 +24,13 @@ class ConfigurationManager:
             temperature=self.config.relevance.temperature
         )
         return relevance_config
+    
+    def get_summarization_config(self):
+        summarization_config = SummarizationConfig(
+            model_name=self.config.summarization.model_name,
+            temperature=self.config.summarization.temperature,
+            max_summary_tokens=self.config.summarization.max_summary_tokens,
+            tier=self.config.summarization.tier
+            )
+        
+        return summarization_config
