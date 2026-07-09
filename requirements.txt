@@ -1,0 +1,34 @@
+# Ingestion
+arxiv
+requests
+
+# LangChain ecosystem
+langchain
+langchain-community
+langchain-groq
+langsmith
+groq
+# Embeddings
+sentence-transformers
+torch
+
+# Vector store
+chromadb
+
+# Backend
+fastapi
+uvicorn
+pydantic
+
+# PDF parsing (tier 2, full-text)
+pymupdf
+
+# Env/config
+python-dotenv
+pyyaml
+
+# Type validation
+ensure
+
+# Utility
+python-dateutil
