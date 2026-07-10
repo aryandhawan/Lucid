@@ -17,10 +17,6 @@ summarization:
   max_summary_tokens: 600
   tier: "abstract"
 
-chunking:
-  chunk_size: 2000
-  overlap: 200
-
 vectorstore:
   embedding_model: "BAAI/bge-large-en-v1.5"
   vectorstore_type: "chroma"
@@ -28,6 +24,10 @@ vectorstore:
   collection_name_papers: "arxiv_papers"
   persist_directory: "./vectorstore"
   top_k: 5
+
+  chunk_size: 2000
+  chunk_overlap: 200
+
 
 email:
   sender_email: ""
