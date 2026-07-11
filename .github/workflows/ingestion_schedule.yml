@@ -28,10 +28,10 @@ jobs:
           pip install --upgrade pip
           pip install torch --index-url https://download.pytorch.org/whl/cpu
           pip install -r requirements.txt
-          pip install -e .
 
       - name: Run ingestion pipeline
         env:
+          PYTHONPATH: ${{ github.workspace }}/src
           GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
           EMAIL_PASSWORD: ${{ secrets.EMAIL_PASSWORD }}
           AZURE_STORAGE_CONNECTION_STRING: ${{ secrets.AZURE_STORAGE_CONNECTION_STRING }}
