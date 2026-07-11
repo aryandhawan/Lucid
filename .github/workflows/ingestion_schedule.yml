@@ -28,7 +28,7 @@ jobs:
           pip install --upgrade pip
           pip install torch --index-url https://download.pytorch.org/whl/cpu
           pip install -r requirements.txt
-          pip install -e .
+          if [ -f setup.py ] || [ -f pyproject.toml ]; then pip install -e .; fi
 
       - name: Run ingestion pipeline
         env:
