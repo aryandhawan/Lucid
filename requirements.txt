@@ -6,8 +6,10 @@ requests
 langchain
 langchain-community
 langchain-groq
+langchain-chroma
+langchain-text-splitters
 langsmith
-groq
+
 # Embeddings
 sentence-transformers
 torch
@@ -26,9 +28,16 @@ pymupdf
 # Env/config
 python-dotenv
 pyyaml
+python-box
 
 # Type validation
 ensure
+
+# Groq direct SDK (used in relevance_gate/summarizer)
+groq
+
+# Azure Blob sync
+azure-storage-blob
 
 # Utility
 python-dateutil
