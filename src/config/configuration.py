@@ -3,6 +3,7 @@ from entity.ingestion_config import IngestionConfig
 from entity.relevance_config import RelevanceConfig
 from entity.summarization_config import SummarizationConfig
 from entity.vectorstore_config import VectorStoreConfig
+from entity.email_config import EmailConfig
 class ConfigurationManager:
     def __init__(self, config_filepath: Path = Path("config/config.yaml")):
         self.config = read_yaml(config_filepath)
@@ -49,3 +50,10 @@ class ConfigurationManager:
         )
         return vectorstore_config
     
+    def get_email_config(self):
+        email_config = EmailConfig(
+            sender_email=self.config.email.sender_email,
+            recipient_email=self.config.email.recipient_email,
+            subject_template=self.config.email.subject_template
+        )
+        return email_config
