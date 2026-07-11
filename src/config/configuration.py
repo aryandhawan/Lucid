@@ -2,6 +2,7 @@ from utils.common import *
 from entity.ingestion_config import IngestionConfig
 from entity.relevance_config import RelevanceConfig
 from entity.summarization_config import SummarizationConfig
+from entity.vectorstore_config import VectorStoreConfig
 class ConfigurationManager:
     def __init__(self, config_filepath: Path = Path("config/config.yaml")):
         self.config = read_yaml(config_filepath)
@@ -34,3 +35,17 @@ class ConfigurationManager:
             )
         
         return summarization_config
+
+    def get_vectorstore_config(self):
+        vectorstore_config = VectorStoreConfig(
+            embedding_model=self.config.vectorstore.embedding_model,
+            vectorstore_type=self.config.vectorstore.vectorstore_type,
+            device=self.config.vectorstore.device,
+            collection_name_papers=self.config.vectorstore.collection_name_papers,
+            persist_directory=self.config.vectorstore.persist_directory,
+            top_k=self.config.vectorstore.top_k,
+            chunk_size=self.config.vectorstore.chunk_size,
+            chunk_overlap=self.config.vectorstore.chunk_overlap
+        )
+        return vectorstore_config
+    
