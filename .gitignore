@@ -6,3 +6,5 @@ __pycache__/
 chroma_db/
 .DS_Store
 Vectorstore/
+research_digest.egg-info/
+__init__.py
