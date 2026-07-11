@@ -4,22 +4,24 @@ from langchain_community.embeddings import HuggingFaceEmbeddings
 from langchain_chroma import Chroma
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain_core.documents import Document
+import torch
 
 
 class VectorStore:
     def __init__(self, config: VectorStoreConfig):
-        self.config = config
+        self.config = config  
+        device = "cuda" if torch.cuda.is_available() else "cpu"
 
         self.embedding_model = HuggingFaceEmbeddings(
             model_name=self.config.embedding_model,
-            model_kwargs={"device": self.config.device},
+            model_kwargs={"device": device},
             encode_kwargs={"normalize_embeddings": True}
         )
 
         self.text_splitter = RecursiveCharacterTextSplitter(
-            chunk_size=self.config.chunk_size,
-            chunk_overlap=self.config.chunk_overlap,
-        )
+                chunk_size=self.config.chunk_size,
+                chunk_overlap=self.config.chunk_overlap,
+            )
 
         self.vectorstore = Chroma(
             collection_name=self.config.collection_name_papers,

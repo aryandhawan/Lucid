@@ -31,5 +31,5 @@ vectorstore:
 
 email:
   sender_email: "aryandhawan2802@gmail.com"
-  recipient_email: "aryandhawan2802@gmail.com"
+  recipient_email: ["aryandhawan2802@gmail.com","rudrabhavsar33@gmail.com","ysgamerz40@gmail.com","sumitrajput231006@gmail.com"]
   subject_template: "Daily AI Research Papers Digest - {date}"

@@ -37,21 +37,20 @@ class EmailDigestSender:
             return
 
         final_html = self._build_html(digest_papers)
-
         sender_email = self.config.sender_email
-        sender_password = os.getenv("EMAIL_PASSWORD")  # never store password in config.yaml
-        recipient_email = self.config.recipient_email
+        sender_password = os.getenv("EMAIL_PASSWORD")
         subject = self.config.subject_template.replace("{date}", date.today().strftime("%B %d, %Y"))
-
-        msg = MIMEMultipart("alternative")
-        msg["Subject"] = subject
-        msg["From"] = sender_email
-        msg["To"] = recipient_email
-        msg.attach(MIMEText(final_html, "html"))
 
         with smtplib.SMTP(self.smtp_server, self.smtp_port) as server:
             server.starttls()
             server.login(sender_email, sender_password)
-            server.sendmail(sender_email, recipient_email, msg.as_string())
 
-        print(f"Digest email sent to {recipient_email} with {len(digest_papers)} papers.")
+            for recipient in self.config.recipient_emails:
+                msg = MIMEMultipart("alternative")
+                msg["Subject"] = subject
+                msg["From"] = sender_email
+                msg["To"] = recipient
+                msg.attach(MIMEText(final_html, "html"))
+                server.sendmail(sender_email, recipient, msg.as_string())
+
+        print(f"Digest email sent to {len(self.config.recipient_emails)} recipients with {len(digest_papers)} papers.")
