@@ -2,8 +2,9 @@ name: Research Digest - Daily Ingestion
 
 on:
   schedule:
-    - cron: '30 3 * * *'  # runs daily at 3:30 AM UTC (~9:00 AM IST) — adjust as you like
-  workflow_dispatch:  
+    - cron: '30 3 * * *'  # runs daily at 3:30 AM UTC (~9:00 AM IST)
+  workflow_dispatch:  # allows manual trigger from the Actions tab
+
 jobs:
   run-ingestion:
     runs-on: ubuntu-latest
@@ -11,6 +12,11 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+
+      - name: Debug - list files
+        run: |
+          pwd
+          ls -la
 
       - name: Set up Python
         uses: actions/setup-python@v5
