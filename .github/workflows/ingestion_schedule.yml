@@ -1,0 +1,32 @@
+name: Research Digest - Daily Ingestion
+
+on:
+  schedule:
+    - cron: '30 3 * * *'  # runs daily at 3:30 AM UTC (~9:00 AM IST) — adjust as you like
+  workflow_dispatch:  
+jobs:
+  run-ingestion:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run: |
+          pip install --upgrade pip
+          pip install torch --index-url https://download.pytorch.org/whl/cpu
+          pip install -r requirements.txt
+          pip install -e .
+
+      - name: Run ingestion pipeline
+        env:
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+          EMAIL_PASSWORD: ${{ secrets.EMAIL_PASSWORD }}
+          AZURE_STORAGE_CONNECTION_STRING: ${{ secrets.AZURE_STORAGE_CONNECTION_STRING }}
+        run: python src/api/main.py
