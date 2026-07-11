@@ -2,8 +2,8 @@
 
 ingestion:
   arxiv_categories: ["cs.AI", "cs.CL", "cs.CV", "cs.LG", "cs.NE", "cs.RO"]
-  max_results_per_category: 1
-  days_back: 1
+  max_results_per_category: 5
+  days_back: 2
 
 relevance:
   interest_profile: ["GPU inference", "AI hardware/accelerators", "LLM serving", "quantization", "generative AI systems", "large language models"]
