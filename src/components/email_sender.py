@@ -45,7 +45,7 @@ class EmailDigestSender:
             server.starttls()
             server.login(sender_email, sender_password)
 
-            for recipient in self.config.recipient_emails:
+            for recipient in self.config.recipient_email:
                 msg = MIMEMultipart("alternative")
                 msg["Subject"] = subject
                 msg["From"] = sender_email
