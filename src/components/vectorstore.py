@@ -43,3 +43,8 @@ class VectorStore:
         )
 
         self.vectorstore.add_documents([doc])
+
+    def exists(self, arxiv_id: str) -> bool:
+        """Check if a paper is already stored in the vectorstore."""
+        result = self.vectorstore.get(where={"arxiv_id": arxiv_id})
+        return len(result["ids"]) > 0
