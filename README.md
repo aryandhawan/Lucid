@@ -4,8 +4,7 @@ An autonomous, scheduled RAG-based pipeline that tracks the latest AI/ML researc
 
 Built solo, end-to-end: ingestion, LLM-based relevance filtering, summarization, vector storage, and automated delivery — running on a fully serverless, cost-minimal architecture.
 
-![Digest email screenshot](docs/demo-screenshot.png)
-*(Add a screenshot or short GIF of the email digest here)*
+![alt text](image.png)
 
 ---
 
