@@ -13,7 +13,7 @@ class EmailDigestSender:
         self.smtp_server = "smtp.gmail.com"  
         self.smtp_port = 587
 
-        with open("email_template.html", "r", encoding="utf-8") as f:
+        with open("digest_template.html", "r", encoding="utf-8") as f:
             self.template = f.read()
 
     def _build_html(self, digest_papers: list[dict]) -> str:
