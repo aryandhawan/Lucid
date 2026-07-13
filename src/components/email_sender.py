@@ -53,4 +53,4 @@ class EmailDigestSender:
                 msg.attach(MIMEText(final_html, "html"))
                 server.sendmail(sender_email, recipient, msg.as_string())
 
-        print(f"Digest email sent to {len(self.config.recipient_emails)} recipients with {len(digest_papers)} papers.")
+        print(f"Digest email sent to {len(self.config.recipient_email)} recipients with {len(digest_papers)} papers.")
