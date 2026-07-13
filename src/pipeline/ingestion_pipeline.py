@@ -19,9 +19,14 @@ class IngestionPipeline:
 
     def run(self) -> list[dict]:
         papers = self.fetcher.find_research_papers()
+        print(f"DEBUG papers fetched: {len(papers)}")
 
         digest_papers = []
         for paper in papers:
+            if self.vectorstore.exists(paper["arxiv_id"]):
+                print(f"DEBUG skipping already-seen: {paper['title'][:50]}")
+                continue  # already processed in a previous run, skip entirely
+
             score = self.classifier.classify_relevance(paper)
             if not self.classifier.is_relevant(score):
                 continue
@@ -38,4 +43,4 @@ class IngestionPipeline:
             })
 
         return digest_papers
-    
+        
