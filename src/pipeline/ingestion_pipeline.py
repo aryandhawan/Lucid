@@ -25,7 +25,7 @@ class IngestionPipeline:
         for paper in papers:
             if self.vectorstore.exists(paper["arxiv_id"]):
                 print(f"DEBUG skipping already-seen: {paper['title'][:50]}")
-                continue  # already processed in a previous run, skip entirely
+                continue  
 
             score = self.classifier.classify_relevance(paper)
             if not self.classifier.is_relevant(score):
