@@ -1,10 +1,11 @@
-# Research Digest Automation
+# Lucid
 
 An autonomous, scheduled RAG-based pipeline that tracks the latest AI/ML research on GPU inference, LLM serving, and hardware acceleration — filters it against a personal interest profile, summarizes it for engineers (not analysts), and delivers it as a daily email digest. No manual intervention required.
 
 Built solo, end-to-end: ingestion, LLM-based relevance filtering, summarization, vector storage, and automated delivery — running on a fully serverless, cost-minimal architecture.
 
-<img width="1362" height="507" alt="image" src="https://github.com/user-attachments/assets/0cc7ba14-b567-40d5-ae39-bff7533ffe66" />
+<img width="1396" height="616" alt="image" src="https://github.com/user-attachments/assets/1ee0d531-22c5-416f-be3d-773620dba698" />
+
 
 
 ---
