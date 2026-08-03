@@ -2,7 +2,7 @@ from src.components.ingestion import ArxivFetcher
 from src.components.relevance_gate import RelevanceClassifier
 from src.components.summarizer import Summarizer
 from src.components.vectorstore import VectorStore
-
+from urllib.parse import quote
 
 
 class IngestionPipeline:
@@ -34,12 +34,16 @@ class IngestionPipeline:
             summary = self.summarizer.summarize(paper)
             self.vectorstore.create_vectorstore(summary, score, paper)
 
+            chat_url = f"https://localhost:8501/?paper_id={quote(paper['arxiv_id'])}&title={quote(paper['title'])}"
+
+
             digest_papers.append({
                 "title": paper["title"],
                 "summary": summary,
                 "arxiv_id": paper["arxiv_id"],
                 "pdf_url": paper["pdf_url"],
                 "relevance_score": score,
+                "chat_url": chat_url,
             })
 
         return digest_papers
