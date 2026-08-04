@@ -1,11 +1,11 @@
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI, HTTPException,Header
 from src.services.chat_service import ChatService
 from src.components.vectorstore import VectorStore
 from src.config.configuration import ConfigurationManager
 from src.utils.blob_sync import download_vectorstore
 from pydantic import BaseModel
 from typing import Optional
-
+import os
 app = FastAPI(title="Lucid Chat")
 
 # Shared, app-wide state — built once, reused across every request
@@ -40,7 +40,11 @@ async def chat_endpoint(request: ChatRequest):
 
 
 @app.post("/internal/reload-vectorstore")
-def reload_vectorstore():
+def reload_vectorstore(authorization: str = Header(None)):
+    expected = f"Bearer {os.getenv('RELOAD_SECRET')}"
+    if authorization != expected:
+        raise HTTPException(status_code=401, detail="Unauthorized")
+
     try:
         state["chat_service"] = build_chat_service()
         return {"message": "Vectorstore reloaded successfully."}
