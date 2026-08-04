@@ -1,0 +1,12 @@
+fastapi
+uvicorn
+langchain
+langchain-groq
+langchain-chroma
+langsmith
+sentence-transformers
+torch 
+chromadb
+pydantic
+python-dotenv
+azure-storage-blob
