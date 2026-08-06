@@ -10,3 +10,6 @@ chromadb
 pydantic
 python-dotenv
 azure-storage-blob
+ensure
+box
+streamlit
