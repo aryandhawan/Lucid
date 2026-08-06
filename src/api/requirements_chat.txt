@@ -5,7 +5,6 @@ langchain-groq
 langchain-chroma
 langsmith
 sentence-transformers
-torch 
 chromadb
 pydantic
 python-dotenv
