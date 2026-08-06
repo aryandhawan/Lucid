@@ -11,5 +11,6 @@ pydantic
 python-dotenv
 azure-storage-blob
 ensure
-box
-streamlit
+python-box
+langchain-community
+langchain-text-splitters
