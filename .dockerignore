@@ -1,0 +1,31 @@
+# Version control
+.git
+.gitignore
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+venv/
+env/
+*.egg-info/
+
+# Environment/secrets — never bake these into the image
+.env
+
+# Ingestion-only files, not needed by the chat server
+docs/
+*.pdf
+
+# OS/editor junk
+.DS_Store
+.vscode/
+.idea/
+
+# The full ingestion requirements file — image should only use requirements_chat.txt
+requirements.txt
+# Vectorstore local cache, if it exists on disk — the container downloads fresh from Blob at startup
+vectorstore/
+
+# Logs
+*.log
